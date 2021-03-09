@@ -1,0 +1,39 @@
+besu --data-path=data --genesis-file=../genesis.json --miner-enabled --miner-coinbase 0x3EADdF3293acEF91f34C1382418Ee7ee18A6ADa4 --rpc-http-enabled --rpc-http-host=0.0.0.0 --host-allowlist="*" --rpc-http-port=8547 --rpc-http-cors-origins="all" --logging=all --rpc-http-api=ETH,NET,WEB3,ADMIN,MINER,DEBUG,TRACE,IBFT
+
+
+besu --data-path=data --genesis-file=../genesis.json --rpc-http-enabled --rpc-http-api=ETH,NET,IBFT --host-allowlist="*" --rpc-http-cors-origins="all"
+
+
+
+besu --data-path=data --genesis-file=../genesis.json --bootnodes=enode://73bcd2633c71ffb01fe3922ad2a8d621e13f6afde96896bd8e7df4cc249cab8ac281a4572be7f1fd7bbe5e667b483463e7e4e5b43d15706e00c10f1e9fd9f64c@127.0.0.1:30303 --p2p-port=30306 --rpc-http-enabled --rpc-http-api=ETH,NET,IBFT --host-allowlist="*" --rpc-http-cors-origins="all" --rpc-http-port=8553
+
+
+
+
+
+
+enode://f1211f01b36915cb05317a5f0dda7faaa108547f0d935ba713e23b3bbc743740004418dbdd02fc2784685f1d2212fce41e8faf207d6a97a3b618106bdbe25db2@127.0.0.1:30303
+
+
+besu --data-path=data --bootnodes="enode://5b2fe6ca5bf80efb4141c0b42d5755abdaec4709fc63a0db69177e28aa78f3bc067e6f6eb42855563b7c9de6398aaa5b9ef84eaeaedea484d9aa59a770d8f826@20.68.104.105:30303" --p2p-port=30304 --logging=all --rpc-http-enabled --rpc-http-host=0.0.0.0 --host-allowlist="*" --rpc-http-port=8549 --rpc-http-cors-origins="all"
+
+besu --data-path=data --genesis-file=../genesis.json --bootnodes=enode://f1211f01b36915cb05317a5f0dda7faaa108547f0d935ba713e23b3bbc743740004418dbdd02fc2784685f1d2212fce41e8faf207d6a97a3b618106bdbe25db2@127.0.0.1:30303 --p2p-port=30305
+
+
+ethsigner --chain-id=1335 --downstream-http-host=192.168.0.131 --downstream-http-path=/v3/d0e63ca5bb1e4eef2284422efbc51a56 --downstream-http-port=443 \
+--downstream-http-tls-enabled file-based-signer --key-file=/mydirectory/keyFile \
+--password-file=/mydirectory/passwordFile
+
+
+
+
+
+ethsigner --chain-id=1335 --downstream-http-port=8545 file-based-signer --key-file=keyFile --password-file=passwordFile
+
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":51}' http://127.0.0.1:8545
+
+admin.addPeer("enode://dd35b318d8533e7ff949ad3810ee0e8fbaf9aea9573d8458e36230c8b86a053ac6a8384e6b11b7dd9e3777fd873cf89bb5a1d79ba699fabd921d8e751f112d33@151.230.113.190:30304?discport=0")
+
+
+
+Enode URL enode://6ebfc4f4b36409aa6b9049a10287870889f9b4c22ac11f6edcaa448cd28c1d16127d3fde2024c316dbf22ea1b01a61219c42b3aa62b3e20e0cece9990a196fa7@127.0.0.1:30304
