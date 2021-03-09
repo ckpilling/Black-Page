@@ -1,0 +1,7 @@
+besu --data-path=data --genesis-file=../genesis.json --miner-enabled --miner-coinbase 0x3EADdF3293acEF91f34C1382418Ee7ee18A6ADa4 --rpc-http-enabled --rpc-http-host=0.0.0.0 --host-allowlist="*" --rpc-http-port=8547 --rpc-http-cors-origins="all" --logging=all --rpc-http-api=ETH,NET,WEB3,ADMIN,MINER,DEBUG,TRACE,IBFT --min-gas-price=0
+
+besu --data-path=data --genesis-file=../genesis.json --bootnodes=enode://14937c276863f157b0cbb298caa86a692b94588e1a120a99e4aa6bd4fda26dc92c9473661861bb770c7808af8069f81980cc2f1ca1924538bfd3f2a49a2151d7@127.0.0.1:30303 --p2p-port=30304 --rpc-http-enabled --rpc-http-api=ETH,NET,IBFT --host-allowlist="*" --rpc-http-cors-origins="all" --rpc-http-port=8549 --min-gas-price=0
+
+besu --data-path=data --genesis-file=../genesis.json --bootnodes=enode://14937c276863f157b0cbb298caa86a692b94588e1a120a99e4aa6bd4fda26dc92c9473661861bb770c7808af8069f81980cc2f1ca1924538bfd3f2a49a2151d7@127.0.0.1:30303 --p2p-port=30305 --rpc-http-enabled --rpc-http-api=ETH,NET,IBFT --host-allowlist="*" --rpc-http-cors-origins="all" --rpc-http-port=8551 --min-gas-price=0
+
+besu --data-path=data --genesis-file=../genesis.json --bootnodes=enode://14937c276863f157b0cbb298caa86a692b94588e1a120a99e4aa6bd4fda26dc92c9473661861bb770c7808af8069f81980cc2f1ca1924538bfd3f2a49a2151d7@127.0.0.1:30303 --p2p-port=30306 --rpc-http-enabled --rpc-http-api=ETH,NET,IBFT --host-allowlist="*" --rpc-http-cors-origins="all" --rpc-http-port=8553 --min-gas-price=0
