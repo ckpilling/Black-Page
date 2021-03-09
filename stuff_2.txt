@@ -1,0 +1,122 @@
+echo 'export ethereum_home=/home/chris/ethereum' >> ~/.bash_profile 
+
+
+genesis block
+
+file name = genesis.json
+
+----------------------------
+----------------------------
+
+1. initialise the block
+
+source ~/.bash_profile
+
+geth --rpc --rpcport "8547" --rpcaddr 127.0.0.1 --rpccorsdomain "*" --datadir "$ethereum_home/node1" init "$ethereum_home/genesis.json"
+
+geth --datadir "$ethereum_home/node1" init "$ethereum_home/genesis.json"
+
+geth --datadir "$ethereum_home/node2" init "$ethereum_home/genesis.json"
+
+geth --datadir "$ethereum_home/node3" init "$ethereum_home/genesis.json"
+
+geth --rpc --rpcport "8549" --rpcaddr 127.0.0.1 --rpccorsdomain "*" --datadir "$ethereum_home/node2" init "$ethereum_home/genesis.json"
+
+geth --rpc --rpcport "8551" --rpcaddr 127.0.0.1 --rpccorsdomain "*" --datadir "$ethereum_home/node3" init "$ethereum_home/genesis.json"
+
+===========================================================================================
+
+2. start the console
+
+geth --rpc --rpcport "8547" --rpcaddr 127.0.0.1 --rpccorsdomain "*" --port 30303 --networkid 1333 --allow-insecure-unlock --datadir "$ethereum_home/node1" --nodiscover --ipcpath "$ethereum_home/node1/geth.ipc" console 2>console.log
+
+geth --http --http.port "8547" --http.addr 192.168.0.131 --http.corsdomain "*" --port 30303 --networkid 1333 --allow-insecure-unlock --datadir "$ethereum_home/node1" --nodiscover --ipcpath "$ethereum_home/node1/geth.ipc"
+
+geth --rpc --rpcport "8549" --rpcaddr 127.0.0.1 --rpccorsdomain "*" --port 30305 --networkid 1333 --allow-insecure-unlock --datadir "$ethereum_home/node2" --nodiscover --ipcpath "$ethereum_home/node2/geth.ipc" console 2>console.log
+
+geth --http --http.port "8549" --http.addr 192.168.0.131 --http.corsdomain "*" --port 30305 --networkid 1333 --allow-insecure-unlock --datadir "$ethereum_home/node2" --nodiscover --ipcpath "$ethereum_home/node2/geth.ipc --rpcapi web3,net,eth,miner,personal,admin
+
+geth --rpc --rpcport "8551" --rpcaddr 127.0.0.1 --rpccorsdomain "*" --port 30307 --networkid 1333 --allow-insecure-unlock --datadir "$ethereum_home/node3" --nodiscover --ipcpath "$ethereum_home/node3/geth.ipc" console 2>console.log
+
+geth --http --http.port "8551" --http.addr 127.0.0.1 --http.corsdomain "*" --port 30307 --networkid 1333 --allow-insecure-unlock --datadir "$ethereum_home/node3" --nodiscover --ipcpath "$ethereum_home/node3/geth.ipc" console 2>console.log
+
+
++_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_
++_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_
++_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_
+
+source ~/.bash_profile
+
+geth --datadir "$ethereum_home/node1" init "$ethereum_home/genesis.json"
+
+geth --datadir "$ethereum_home/node2" init "$ethereum_home/genesis.json"
+
+geth --datadir "$ethereum_home/node3" init "$ethereum_home/genesis.json"
+
+geth --http --http.port 8547 --http.addr 192.168.0.131 --http.corsdomain "*" --port 30303 --networkid 1333 --allow-insecure-unlock --datadir "$ethereum_home/node1" --nodiscover --ipcpath "$ethereum_home/node1/geth.ipc" --verbosity 5 --rpcapi admin,web3,eth,net,personal,miner
+
+geth attach http://192.168.0.131:8547
+
+geth --http --http.port 8549 --http.addr 192.168.0.131 --http.corsdomain "*" --port 30305 --networkid 1333 --allow-insecure-unlock --datadir "$ethereum_home/node2" --nodiscover --ipcpath "$ethereum_home/node2/geth.ipc" --verbosity 5 --rpcapi admin,web3,eth,net,personal,miner 
+
+geth attach http://192.168.0.131:8549
+
+
+geth --http --http.port 8551 --http.addr 192.168.0.131 --http.corsdomain "*" --port 30307 --networkid 1333 --allow-insecure-unlock --datadir "$ethereum_home/node3" --nodiscover --ipcpath "$ethereum_home/node3/geth.ipc" --verbosity 5 --rpcapi admin,web3,eth,net,personal,miner
+
+geth attach http://192.168.0.131:8551
+
++_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_
++_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_
++_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_
+
+
+geth --http --http.port 8547 --http.addr 192.168.0.131 --http.corsdomain "*" --port 30304 --networkid 1335 --allow-insecure-unlock --datadir "$ethereum_home/nodebesu" --nodiscover --ipcpath "$ethereum_home/nodebesu/geth.ipc" --verbosity 5 --rpcapi admin,web3,eth,net,personal,miner
+
+3.create a 2nd node
+geth  --datadir "$ethereum_home/node3" init "$ethereum_home/genesis.json"
+
+4. Start on a different port and specify networkid
+geth --datadir "$ethereum_home/node2" --port 30305 --nodiscover --networkid 1333 console 2>console.log
+
+5. get the admin.nodeInfo enode from the second instance and copy it into admin.addPeer  in the first node
+
+
+
+
+6. Restart specifying IPC path
+geth --datadir "$ethereum_home/node1" --nodiscover --ipcpath "$ethereum_home/node1/geth.ipc" --networkid 333 console 2>console.log
+
+7 run get attach to attach another window to the node using the pic file
+geth attach ipc:$ethereum_home/youtube1-a/geth.ipc
+
+
+
+
+
+
+
+
+
+
+
+====================================================================
+
+geth attach ipc:"$ethereum_home/node1/geth.ipc"
+
+
+
+
+
+
+
+
+
+eth.sendTransaction({from: "0x3c63a32e808d129ccb51ae51c5e2636fd125be8a",to: "0x6bBFAC68288907b1C58EdBD1D0Fea9452d0AD4e8", value: web3.toWei(4, "ether")})
+
+eth.sendTransaction({from: "0xe8e5a7ade24b4c713366e7c2ffc3f6e5d75cd514",to: "0x023aab0a6126f130df93cf9f51a6ee84443a11f8", value: "1000000000000000000000"})
+
+
+
+
+web3.personal.unlockAccount(web3.personal.listAccounts[0], null) 
